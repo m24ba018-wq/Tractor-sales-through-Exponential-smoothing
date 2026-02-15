@@ -1,4 +1,4 @@
-import streamlit as st
+app_py_content = """import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -17,7 +17,7 @@ def load_data(path):
     df1 = df.set_index('Month-Year')
     return df, df1
 
-df, df1 = load_data('/content/Tractor-Sales.csv') # Ensure this path is correct for deployment
+df, df1 = load_data('Tractor-Sales.csv') # Ensure this path is correct for deployment
 
 st.header('Original Tractor Sales Data')
 st.write(df)
@@ -109,3 +109,9 @@ st.plotly_chart(fig_forecast, use_container_width=True)
 
 st.subheader('2015 Forecasted Tractor Sales')
 st.write(forecast_2015.to_frame(name='Forecasted Sales'))
+"""
+
+with open('app.py', 'w') as f:
+    f.write(app_py_content)
+
+print("app.py has been created in the current directory. You can download it from the Colab file browser (left-hand sidebar -> 'Files' icon).")
